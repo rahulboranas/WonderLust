@@ -1,4 +1,4 @@
-<% layout ("/layouts/boilerplate") %>
+<!-- <% layout ("/layouts/boilerplate") %>
 <div class="row mt-3">
   <div class="col-8 offset-3">
     <h3><%=listing.title %></h3>
@@ -30,7 +30,7 @@
    <form method="POST" action="/listings/<%=listing.id%>/reviews" novalidate class="needs-validation">
      <div class="mb-3">
        <label for="rating" class="form-label">Ratings</label>
-       <!-- <input class="form-range" id="rating" type="range" min="1" max="5" name="review[rating]"> -->
+      
     
      <fieldset class="starability-heart">
   <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
@@ -80,4 +80,97 @@
 </div>
 
 
+ -->
+<div class="show_container">
 
+  <div class="show_main">
+    <h2 class="show_title"><%= listing.title %></h2>
+
+    <div class="show_card">
+
+      <img src="<%= listing.image.url %>" alt="_listing_image" class="show_image">
+
+      <div class="show_details">
+        <p><strong>Owned By:</strong> @<%= listing.owner.username %></p>
+        <p><%= listing.description %></p>
+        <p><strong>Location:</strong> <%= listing.location %></p>
+        <p><strong>Price:</strong> ₹<%= listing.price.toLocaleString("en-IN") %></p>
+        <p><strong>Country:</strong> <%= listing.country %></p>
+      </div>
+
+    </div>
+
+    <% if(currUser && listing.owner._id.equals(currUser._id)){ %>
+      <div class="show_actions">
+        <a href="/listings/<%= listing._id %>/edit" class="show_btn_edit">Edit</a>
+
+        <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+          <button class="show_btn_delete">Delete</button>
+        </form>
+      </div>
+    <% } %>
+
+  </div>
+
+
+  <div class="review_section">
+
+    <% if(currUser){ %>
+      <h3 class="review_title">Leave a Review</h3>
+
+      <form method="POST" action="/listings/<%=listing.id%>/reviews" class="review_form">
+
+        <label>Ratings</label>
+
+        <fieldset class="starability-heart">
+
+          <!-- ⭐ This line FIXES the default gold star problem ⭐ -->
+          <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="" aria-label="No rating." checked />
+
+          <input type="radio" id="rate1" name="review[rating]" value="1">
+          <label for="rate1" title="1 Star">1</label>
+
+          <input type="radio" id="rate2" name="review[rating]" value="2">
+          <label for="rate2" title="2 Star">2</label>
+
+          <input type="radio" id="rate3" name="review[rating]" value="3">
+          <label for="rate3" title="3 Star">3</label>
+
+          <input type="radio" id="rate4" name="review[rating]" value="4">
+          <label for="rate4" title="4 Star">4</label>
+
+          <input type="radio" id="rate5" name="review[rating]" value="5">
+          <label for="rate5" title="5 Star">5</label>
+
+        </fieldset>
+
+        <label>Comment</label>
+        <textarea name="review[comment]" class="review_input" required></textarea>
+
+        <button class="review_submit">Submit</button>
+
+      </form>
+
+      <hr>
+    <% } %>
+
+    <h3>All Reviews</h3>
+
+    <div class="review_list">
+      <% for(review of listing.reviews){ %>
+        <div class="review_card">
+          <p class="review_user">@<%= review.author.username %></p>
+          <p class="starability-result" data-rating="<%= review.rating %>"></p>
+          <p><%= review.comment %></p>
+          <p><%= review.rating %> Stars</p>
+
+          <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+            <button class="review_delete_btn">Delete</button>
+          </form>
+        </div>
+      <% } %>
+    </div>
+
+  </div>
+
+</div>

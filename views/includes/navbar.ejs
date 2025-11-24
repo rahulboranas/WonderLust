@@ -3,18 +3,34 @@
     border-radius: 1.5rem;
     background-color: #fe424d;
     color: white;
+    display: flex;
   }
-
+  
+  .searchbtn i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 6px;
+  }
   .searchbtn:hover {
     background-color: #fe424d;
     opacity: 0.7;
     color: white;
   }
-
-  .searchbtn i {
-    display: inline;
-    margin-right: 0.5rem;
+  @media (min-width: 768px) {
+  .mobile-padding {
+    padding-left: 0;
+    padding-right: 0;
   }
+}
+@media (max-width: 600px) {
+  .filter-new {
+    display: none !important;
+  }
+ 
+}
+
+ 
 
   .searchst {
     border-radius: 1.5rem;
@@ -22,14 +38,83 @@
     padding-right: 2rem;
   }
 
-  .adjust {
-    margin-left: 5rem;
+  .center-search {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  #exploreBox {
+    display: none !important;
+  }
+
+  /* --------------------------------------------- */
+  /* LEFT → RIGHT Sliding Mobile Menu */
+  /* --------------------------------------------- */
+
+  #navbarNavAltMarkup {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 260px;
+    height: 20vh;
+    background: white;
+    padding: 1.5rem;
+    box-shadow: 4px 6px 15px rgba(0,0,0,0.5);
+    transition: left 0.35s ease-in-out;
+    z-index: 9999;
+    border-bottom-right-radius: 15px;
+  }
+
+  #navbarNavAltMarkup.show {
+    left: 0;
+  }
+  .nav-custom{
+    color: #fe424f8a;
+    font-weight: bold;
+  }
+  .nav-custom:hover{
+    color: #fe424d !important;
+  }
+
+  /* Desktop mode resets */
+  @media (min-width: 601px) {
+    #navbarNavAltMarkup {
+      position: static;
+      width: auto;
+      height: auto;
+      left: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .center-search {
+      display: none !important;
+    }
   }
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
+
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-solid fa-compass"></i>
+    </a>
+ <a class="navbar-brand  nav-custom" href="/listings">
+     Explore More
+    </a>
+    <div class="center-search">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2 searchst" type="search" placeholder="Search destination"/>
+        <button class="btn searchbtn" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>Search
+        </button>
+      </form>
+    </div>
+
     <button
       class="navbar-toggler"
       type="button"
@@ -40,27 +125,11 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
-      </div>
-
-      <div class="adjust">
-        <form class="d-flex adjust" ro le="search">
-          <input
-            class="form-control me-2 searchst"
-            type="search"
-            placeholder="Search destination"
-          />
-          <button class="btn searchbtn" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>Search
-          </button>
-        </form>
-      </div>
+      <div class="navbar-nav" id="exploreBox"></div>
 
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="/listings/new">Airbnb your home</a>
-
-        <% if (typeof currUser === "undefined" || !currUser) { %>
+        <% if (!currUser) { %>
           <a class="nav-link" href="/signup"><b>Sign Up</b></a>
           <a class="nav-link" href="/login"><b>Log In</b></a>
         <% } else { %>
@@ -68,5 +137,18 @@
         <% } %>
       </div>
     </div>
+
   </div>
 </nav>
+
+<script>
+  const nav = document.getElementById("navbarNavAltMarkup");
+
+  nav.addEventListener("show.bs.collapse", () => {
+    document.body.style.overflow = "hidden";
+  });
+
+  nav.addEventListener("hide.bs.collapse", () => {
+    document.body.style.overflow = "auto";
+  });
+</script>

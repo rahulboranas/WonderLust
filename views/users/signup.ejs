@@ -1,4 +1,4 @@
-<% layout ("/layouts/boilerplate") %><br>
+<!-- <% layout ("/layouts/boilerplate") %><br>
 <div class="row">
   <div class="col-6 offset-3">
   <h3>SignUp on wanderLust</h3>
@@ -21,4 +21,42 @@
   <button class="btn btn-success mb-3">SignUp</button>
 </form>
 </div>
-</div>
+</div> 
+ -->
+
+
+
+
+
+<div class="s_container">
+  <div class="s_box">
+
+    <h3 class="s_title">SignUp on wanderLust</h3>
+
+    <form method="POST" action="/signup" >
+
+      <div class="s_group">
+        <label for="username">Username</label>
+        <input name="username" id="username" placeholder="enter a username" required>
+        <div class="s_error">username cannot be empty</div>
+      </div>
+
+      <div class="s_group">
+        <label for="email">Email</label>
+        <input name="email" id="email" placeholder="enter valid email" required>
+        <div class="s_error">email cannot be empty</div>
+      </div>
+
+      <div class="s_group">
+        <label for="password">Password</label>
+        <input name="password" id="password" placeholder="enter valid password" type="password" required>
+        <div class="s_error">password cannot be empty</div>
+      </div>
+
+      <button class="s_btn">SignUp</button>
+
+    </form>
+
+  </div>
+</div> 
+

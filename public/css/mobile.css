@@ -1,0 +1,306 @@
+
+/* Page center */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  background:white;
+}
+
+/* White box */
+.login-box {
+  background: #fff;
+  padding: 25px;
+  width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Title */
+.login-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Button */
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background: #28a745;
+  border: none;
+  color: white;
+  font-size: 17px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: #218838;
+}
+
+/* Full page center */
+.s_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  background: white;
+}
+
+/* Signup box */
+.s_box {
+  background: white;
+  padding: 25px;
+  width: 380px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Title */
+.s_title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Input group */
+.s_group {
+  margin-bottom: 16px;
+}
+
+.s_group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.s_group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  outline: none;
+}
+
+.s_group input:focus {
+  border-color: #66a3ff;
+}
+
+/* Error message */
+.s_error {
+  font-size: 13px;
+  color: rgba(128, 128, 128, 0.566);
+  margin-top: 4px;
+  display: none; /* Tum JS se show kar sakte ho */
+}
+
+/* Submit button */
+.s_btn {
+  width: 100%;
+  padding: 11px;
+  background: #28a745;
+  border: none;
+  color: white;
+  font-size: 17px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.s_btn:hover {
+  background: #218838;
+}
+/* SUBMIT click hone ke baad hi error dikhana */
+form:invalid .s_error {
+  display: none;
+}
+
+form:invalid input:invalid + .s_error {
+  display: block;
+}
+
+
+/* ----- Layout container ----- */
+.show_container {
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  padding-bottom: 50px;
+}
+
+/* ----- Listing section ----- */
+.show_main {
+  margin-bottom: 40px;
+}
+
+.show_title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.show_card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+}
+
+.show_image {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.show_details p {
+  margin: 6px 0;
+  font-size: 1rem;
+}
+
+/* ----- Buttons ----- */
+.show_actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.show_btn_edit,
+.show_btn_delete {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.show_btn_edit {
+  background: #0066ff;
+  color: #fff;
+}
+
+.show_btn_delete {
+  background: #000;
+  color: white;
+}
+
+/* ----- Review Section ----- */
+.review_title {
+  margin-bottom: 10px;
+}
+
+.review_form {
+  margin-bottom: 20px;
+}
+
+.review_input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.review_submit {
+  padding: 10px 20px;
+  background: #000;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ----- Review List ----- */
+.review_list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.review_card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+}
+
+.review_user {
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .review_list {
+    grid-template-columns: 1fr;
+  }
+}
+.show_image {
+  width: 100%;
+  max-width: 450px;   /* desktop pe image zyada badi nhi hogi */
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;     /* center image */
+}
+
+/* Desktop layout fix */
+.show_card {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Mobile ke liye */
+@media (max-width: 768px) {
+  .show_card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .show_image {
+    max-width: 100%;
+  }
+}
+.review_delete_btn,
+.show_btn_delete {
+  background: #e63946;      /* modern red */
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.25s ease;
+}
+
+.review_delete_btn:hover,
+.show_btn_delete:hover {
+  background: #c5303c;     /* darker red */
+}
+
+.review_delete_btn:active,
+.show_btn_delete:active {
+  transform: scale(0.95);
+}
+.mobile-padding {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
