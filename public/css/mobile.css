@@ -304,3 +304,17 @@ form:invalid input:invalid + .s_error {
   padding-right: 16px;
 }
 
+
+
+/* FLASH MESSAGE MOBILE FIX */
+@media (max-width: 600px) {
+  .alert {
+    width: 90% !important;
+    margin: 1rem auto !important;
+    padding: 1rem 1.2rem !important;
+  }
+
+  .alert-dismissible .btn-close {
+    padding: 1rem !important;
+  }
+}
